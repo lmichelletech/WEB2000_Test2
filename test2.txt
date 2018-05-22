@@ -1,0 +1,91 @@
+1.  What are three things you can do in order to speed up a website's load time? 
+(Enumere tres cosas que se pueden hacer para aumentarle la velocidad a una pagina web) (20pts)
+
+Answer: Load background images via external CSS, minimise unnecessary javascript and other client-side scripting,
+minimise white space, line returns and comment tags, remove unnecessary META tags and META content, compress CSS and JS,
+optimize images, defer longer loading elements, and use media queries to load only the necessary files for a given device, orientation, and browser.
+
+2.  Go to the Google PageSpeed insights page and analyze ncl.com 
+Choose three of the shortcomings this website has and explain the specific tools and workflows we discussed in class which could help 
+this website address these shortcomings. (Dirijase a la herramienta Google PageSpeed Insights y analice el sitio ncl.com. Basado en lo 
+que dice la herramienta, enumere tres medidas especificas que discutimos en clase para corregir tres de los problemas senalados por la 
+herramienta PageSpeed Insights)(20pts)
+
+Answer: 
+a. Page has an average 2.4s FCP and a 2.8s DCL speed. This should be under 1.3 seconds. The amount of time it takes to load a page affects 
+   browser rendering time. You can use external files for the page to load faster. CSS and JavaScript can be loaded in two 
+   different ways: Synchronously or Asynchronously. Browsers load from top to bottom. Scripts that load Synchronously make the browser wait 
+   for it to finish loading the page. When using asynchronous loading, the browser continues loading other elements on the page instead of 
+   waiting. You can defer longer loading elements so the rest of the page loads fast and the user doesn't experience long page loading delays. 
+   You can also use media queries to tell the browser what should be loaded for a particular device, orientation, and browser.  
+
+b. 11 render-blocking round trips: Fewer round trips and bytes results in faster pages.
+   Include a select amount of inline code, use sprites, and combine other files using bundling approach to reduce number of trips.
+   This can be done with webpack. Use media queries and caching to avoid fetching unnecessary elements. 
+
+c. The page has low optimization. It lacks compression: reduce transfer size by compressing and minifying files (core.js). 
+   This can be done with uglify plugin.
+
+   Also, some images aren't optimized: reduce image size (i.e for https://www.ncl.com/sites/default/files/SS.Fedora.jpg). 
+   There are optimizing tools that will reduce file size by compressing and/or reducing colors or image quality. Having jpg helps.
+   Also, don't use unnecessarily large image files and the resize using CSS. For example, using an image that is 2000px wide requires 
+   your page to load the full image and then the CSS requires the browser to adjust it to the appropriate size. This slows down your page.
+   
+
+
+3.  What is the render tree?(20pts)
+
+    Answer: The render is created by combining DOM tree and CSSOM tree while ignoring non-visible or hidden nodes 
+    (i.e. meta tags, display: none elements).
+
+4.  Explain the process of a how a website loads in terms of the internal data structures built and used by the browser 
+    (DOM, CSSOM, etc).(20pts)
+
+    Answer: Website loads from top to bottom. First, the HTML is parsed (DOM Elements). Then DOM tree is built. 
+    Then the CSS is parsed (CSSOM elements). Then CSSOM tree is built. Combine the DOM and CSSOM into a render tree making 
+    sure to leave out hidden elements. Run layout on the render tree to create nodes. Paint individual nodes to screen. 
+
+
+
+6.  Clone the repository named "Asteroids" from www.github.com/fvitech. Once you do this, complete the following steps:
+
+    i.      Fork the github repo so you have your own fork (5pts)
+    ii.     Clone your fork of the Asteroids repository (5pts)
+    iii.    Re-organize the files so image files are inside an img folder and js files are inside a js folder. (5pt)
+    iv.     Initialize your local version of the project as a node project (5pts)
+    v.      Install webpack, webpack dev server, and all the required loaders so that you can have a single code bundle output 
+    to a file named prod.js (10pts)
+    vi.     The code is a bit messy, with many things in the same file. Modularize it by doing the following:
+    Start by copying the contents of the codingIsFun.js file to a new file called main.js
+    Make this new file your webpack entry point
+    Create an npm script to bundle your js code and fire the webpack dev server.(10pts)
+    The Asteroids initialization code (which is marked by the comment which says GENERATE ASTEROIDS IN HTML DOCUMENT) should be in a separate 
+    file named createAsteroids.js. You will need to wrap this code in a function, export the function, then import this function and call it 
+    from within main.js (10pts)
+
+    The auxiliary functions keyDown and keyUp should be moved to a separate file named controls.js.
+    The binding of the keyDown and keyUp events is currently being done in an attribute to the body tag. Change this by using JavaScript's 
+    document.addEventListener function. Your controls.js file should export a single function that configures the controls when called. 
+    Import and call this function from your main.js file. (10pts)
+
+    The controls file binds key handlers that modify variables that are no longer present in the new file. You can fix this by making said 
+    variables global or by moving them from main.js into controls.js and then exporting them from there.
+    
+    No more than one script link is allowed in the main index.html. The only script that should be linked from index.html is prod.js
+    Use a webpack uglify plugin to minify the code (20 point bonus) 
+    
+    vii. Upload your code to fvi-grad.com under your username (10pts)
+
+    Answer: 
+
+
+    7.  In the end, all your JavaScript code should be inside a file named prod.js, which was created by using webpack. 
+    Nothing else should be linked to your html.
+
+    Answer:
+
+    8.  Notice that whenever there is a collision, the audio is being loaded and played. This slows down performance. 
+    Modify the code so that it loads the audio only once, stores it as a global variable, and whenever there is a collision, 
+    you use this global variable to reset the audio's currentTime to zero and then play it. (20pts)
+
+    Answer:
