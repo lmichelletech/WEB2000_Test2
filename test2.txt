@@ -76,13 +76,13 @@ c. The page has low optimization. It lacks compression: reduce transfer size by 
     
     vii. Upload your code to fvi-grad.com under your username (10pts)
 
-    Answer: 
+    Answer: https://github.com/lmichelletech/Asteroids
 
 
     7.  In the end, all your JavaScript code should be inside a file named prod.js, which was created by using webpack. 
     Nothing else should be linked to your html.
 
-    Answer:
+    Answer: https://github.com/lmichelletech/Asteroids
 
     8.  Notice that whenever there is a collision, the audio is being loaded and played. This slows down performance. 
     Modify the code so that it loads the audio only once, stores it as a global variable, and whenever there is a collision, 
